@@ -3,4 +3,7 @@ import request from '@/utils/request'
 export function adminLogin(data) {
     return request.post('/admin/auth/login', data)
 }
-
+//退出登录
+export function adminLogout() {
+    return request.post('/admin/logout')
+}
