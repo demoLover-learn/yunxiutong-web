@@ -16,6 +16,7 @@
             <el-button @click="handleReset">重置</el-button>
         </div>
         <!--:data：用来绑定表格的数据	border显示表格边框线 strip:显示表格的行背景颜色-->
+        <!-- 自己不知道"数据有没有返回"，它只看 loading 这个变量的真假。真正控制遮罩的是你手动改值。-->
         <el-table :data="list" v-loading="loading" border stripe>
             <!--单元格内容太长被截断时，鼠标悬停显示完整内容的 tooltip（提示框）-->
             <el-table-column label="订单编号" prop="orderNo" min-width="120" show-overflow-tooltip />
