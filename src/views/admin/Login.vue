@@ -20,9 +20,12 @@
 <script setup>
 import { ref, reactive } from 'vue'
 import { adminLogin } from '@/api/auth'
-import { useRouter } from 'vue-router'
+//使用router跳转时直接引用useRouter
+import { useRouter, useRoute } from 'vue-router'
 import { ElMessage } from 'element-plus'
+
 const router = useRouter()
+const route = useRoute()
 // 数据容器：存用户输入
 const form = reactive({
     username: '',
@@ -32,6 +35,7 @@ const form = reactive({
 const formRef = ref()
 //参数校验规则
 const rules = {
+    //required:true代表必须填，message是提示信息，trigger是触发校验的时间点，blur是失去焦点时触发校验
     username: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
     password: [{ required: true, message: '请输入密码', trigger: 'blur' }]
 }
@@ -45,11 +49,14 @@ async function handleLogin() {
         console.log('校验通过')
         //调用登录接口，获取token
         const res = await adminLogin(form)
-        //将token存储到localStorage
+        //将token存储到localStorage 
         localStorage.setItem('admin_token', res.token)
         //登录成功后，跳转到管理员后台
-        ElMessage.success(res.msg || "登录成功")
-        router.push({ name: 'adminDashboard' })
+        ElMessage.success("登录成功")
+        //如果用户登录前访问的是工单管理页面，登录后应该跳转到工单管理页面，也就是这个：router.query.redirect
+        //如果用户登录前访问的是用户管理页面，登录后应该跳转到用户管理页面
+        const target = route.query.redirect || '/admin/dashboard'
+        router.push(target)
     } catch (err) {
         console.log("校验失败", err)
     }
