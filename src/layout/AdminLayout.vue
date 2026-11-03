@@ -15,6 +15,16 @@
                             <span>工单管理</span>
                         </template>
                     </el-menu-item>
+                    <el-menu-item index="/admin/ServiceCategoryManage">
+                        <template #title>
+                            <span>服务分类管理</span>
+                        </template>
+                    </el-menu-item>
+                    <el-menu-item index="/admin/ServiceItemManage">
+                        <template #title>
+                            <span>服务项目管理</span>
+                        </template>
+                    </el-menu-item>
                     <el-menu-item index="/admin/workers">
                         <template #title>
                             <span>师傅管理</span>
@@ -23,6 +33,16 @@
                     <el-menu-item index="/admin/users">
                         <template #title>
                             <span>用户管理</span>
+                        </template>
+                    </el-menu-item>
+                    <el-menu-item index="/admin/CommentManage">
+                        <template #title>
+                            <span>评价管理</span>
+                        </template>
+                    </el-menu-item>
+                    <el-menu-item index="/admin/AIKnowledge">
+                        <template #title>
+                            <span>AI知识库文件上传</span>
                         </template>
                     </el-menu-item>
                 </el-menu>

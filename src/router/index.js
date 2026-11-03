@@ -38,6 +38,22 @@ const router = createRouter({
                     path: 'users',
                     name: 'adminUsers',
                     component: () => import('@/views/admin/Users.vue'),
+                }, {
+                    path: 'ServiceCategoryManage',
+                    name: 'serviceCategoryManage',
+                    component: () => import('@/views/admin/ServiceCategoryManage.vue')
+                }, {
+                    path: 'ServiceItemManage',
+                    name: 'serviceItemManage',
+                    component: () => import('@/views/admin/ServiceItemManage.vue')
+                }, {
+                    path: 'CommentManage',
+                    name: 'commentManage',
+                    component: () => import('@/views/admin/CommentManage.vue')
+                }, {
+                    path: 'AIKnowledge',
+                    name: 'aiKnowledge',
+                    component: () => import('@/views/admin/AIKnowledge.vue')
                 }
             ]
         }
