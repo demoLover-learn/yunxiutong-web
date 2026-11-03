@@ -35,8 +35,8 @@
             <div class="pager">
                 <span class="pager-total">共 {{ total }} 条</span>
                 <el-pagination v-model:current-page="query.page" v-model:page-size="query.pageSize" :total="total"
-                    :page-sizes="[10, 20, 50]" layout="sizes, prev, pager, next, jumper"
-                    @current-change="fetchList" @size-change="handleSizeChange" />
+                    :page-sizes="[10, 20, 50]" layout="sizes, prev, pager, next, jumper" @current-change="fetchList"
+                    @size-change="handleSizeChange" />
             </div>
         </div>
 
@@ -60,7 +60,7 @@
 
 <script setup>
 import { ref, onMounted, reactive } from 'vue'
-import { getServiceItemList, deleteCategory, disableCategory, addCategory, updateCategory } from '@/api/serviceItem';
+import { getServiceCategoryList, deleteCategory, disableCategory, addCategory, updateCategory } from '@/api/serviceCategory';
 import { ElMessageBox, ElMessage } from 'element-plus';
 
 const list = ref([])//表格数据
@@ -145,7 +145,7 @@ async function submitForm() {
 async function fetchList() {
     try {
         loading.value = true
-        const res = await getServiceItemList(query)
+        const res = await getServiceCategoryList(query)
         list.value = res.records
         total.value = res.total
     } catch (e) {

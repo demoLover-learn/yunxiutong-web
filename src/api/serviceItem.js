@@ -1,23 +1,21 @@
 import request from '@/utils/request'
-//项目服务分页查询
+//服务项目分页查询
 export function getServiceItemList(data) {
-    return request.get('/admin/service-categories', { params: data })
+    return request.get('/admin/service-items', { params: data })
 }
-//服务的删除
-export function deleteCategory(id) {
-    return request.delete(`/admin/service-categories/${id}`
-    )
+//删除服务项目
+export function deleteServiceItem(id) {
+    return request.delete(`/admin/service-items/${id}`)
 }
-//服务的禁用和启用
-export function disableCategory(id, status) {
-    return request.put(`/admin/service-categories/${id}/status`, { status })
+//更新服务项目状态
+export function updateServiceItemStatus(id, status) {
+    return request.put(`/admin/service-items/${id}/status`, { status })
 }
-//新增分类
-export function addCategory(data) {
-    return request.post('/admin/service-categories', data)
+//更新项目
+export function updateServiceItem(id, data) {
+    return request.put(`/admin/service-items/${id}`, data)
 }
-
-// 编辑分类
-export function updateCategory(id, data) {
-    return request.put(`/admin/service-categories/${id}`, data)
+//新增项目
+export function createServiceItem(data) {
+    return request.post('/admin/service-items', data)
 }
