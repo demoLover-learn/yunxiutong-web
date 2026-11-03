@@ -33,8 +33,16 @@
                             {{ row.status === 1 ? '正常' : '禁用' }}
                         </template>
                     </el-table-column>
-                    <el-table-column label="更新时间" prop="updateTime" width="170" />
-                    <el-table-column label="创建时间" prop="createTime" width="170" />
+                    <el-table-column label="更新时间" prop="updateTime" width="170">
+                        <template #default="{ row }">
+                            {{ fmtTime(row.updateTime) }}
+                        </template>
+                    </el-table-column>
+                    <el-table-column label="创建时间" prop="createTime" width="170">
+                        <template #default="{ row }">
+                            {{ fmtTime(row.createTime) }}
+                        </template>
+                    </el-table-column>
                     <el-table-column label="操作" width="100" fixed="right">
                         <template #default="{ row }">
                             <!--type是用来控制按钮的颜色的-->
@@ -68,6 +76,10 @@ const query = reactive({
     name: '',
     status: '',
 })
+// 后端 LocalDateTime 序列化成 2026-11-03T11:22:00，把 T 换成空格、去掉秒
+function fmtTime(t) {
+    return t ? t.replace('T', ' ').slice(0, 16) : '-'
+}
 //查询函数
 async function fetchList() {
     try {

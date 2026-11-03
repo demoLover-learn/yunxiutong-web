@@ -35,8 +35,8 @@
                         </el-avatar>
                     </template>
                 </el-table-column>
-                <el-table-column label="昵称" prop="nickname" min-width="140" show-overflow-tooltip />
-                <el-table-column label="手机号" prop="phone" width="140" align="center" />
+                <el-table-column label="昵称" prop="nickname" min-width="200" show-overflow-tooltip />
+                <el-table-column label="手机号" prop="phone" min-width="160" align="center" />
                 <el-table-column label="状态" width="100" align="center">
                     <template #default="scope">
                         <el-tag :type="scope.row.status === 1 ? 'success' : 'info'" disable-transitions>
@@ -44,7 +44,7 @@
                         </el-tag>
                     </template>
                 </el-table-column>
-                <el-table-column label="注册时间" width="180" align="center">
+                <el-table-column label="注册时间" min-width="180" align="center">
                     <template #default="scope">{{ fmtTime(scope.row.createTime) }}</template>
                 </el-table-column>
                 <el-table-column label="操作" width="120" fixed="right" align="center">

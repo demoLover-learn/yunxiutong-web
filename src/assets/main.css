@@ -1,1 +1,84 @@
-﻿
+/* ==========
+   全局基础
+   ========== */
+* {
+    box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
+        'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+    font-size: 14px;
+    color: #303133;
+    background: #f0f2f5;
+}
+
+/* ===================
+   管理端页面通用骨架
+   用 .common-layout 限定作用域：
+   只有 AdminLayout 内部的页面会命中，登录页（不在 AdminLayout 里）
+   完全不受影响，仍然用自己那套居中样式。
+   ================== */
+
+/* 整页：纵向排列，卡片之间有间距 */
+.common-layout .major-page {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* 白卡片外观：顶部搜索区 + 内容区共用 */
+.common-layout .head,
+.common-layout .content {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+/* 顶部：标题在左，搜索栏在右 */
+.common-layout .head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 16px 20px;
+}
+
+.common-layout .head h3 {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 600;
+    color: #303133;
+    white-space: nowrap;
+}
+
+/* el-form inline 自带 margin-bottom，放进标题栏里要清掉 */
+.common-layout .head .el-form-item {
+    margin-bottom: 0;
+}
+
+/* 内容区：表格 + 分页 */
+.common-layout .content {
+    padding: 20px;
+}
+
+/* 底部：左边总数，右边分页 */
+.common-layout .pager {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+}
+
+.common-layout .pager-total {
+    font-size: 13px;
+    color: #909399;
+}
